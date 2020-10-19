@@ -2,18 +2,51 @@ const { gql } = require("apollo-server");
 
 const typeDefs = gql`
   type Query {
-    scanResults(ids: [String]): [ScanResult]
+    """
+    Get scan results
+    """
+    scanResults(
+      """
+      List of unique ids. If empty, return total response
+      """
+      ids: [String]
+    ): [ScanResult]
   }
 
   type Mutation {
-    addScanResult(input: ScanResultInput!): AddScanResultResponse!
+    """
+    Add scan results
+    """
+    addScanResult(
+      """
+      Input for scan result
+      """
+      input: ScanResultInput!
+    ): AddScanResultResponse!
 
+    """
+    Update scan result
+    """
     updateScanResult(
+      """
+      Unique Id
+      """
       id: String!
+      """
+      Update input fields
+      """
       input: UpdateScanResultInput!
     ): UpdateScanResultResponse!
 
-    deleteScanResult(id: String!): DeleteScanResultResponse!
+    """
+    Delete scan result entity
+    """
+    deleteScanResult(
+      """
+      Unique Id
+      """
+      id: String!
+    ): DeleteScanResultResponse!
   }
 
   type ScanResult {
