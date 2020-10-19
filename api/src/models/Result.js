@@ -14,15 +14,15 @@ const ResultSchema = new mongoose.Schema({
     required: true,
   },
   finishedAt: {
-    type: Number,
+    type: String,
     required: false,
   },
   queuedAt: {
-    type: Number,
+    type: String,
     required: false,
   },
   scanningAt: {
-    type: Number,
+    type: String,
     required: false,
   },
 });

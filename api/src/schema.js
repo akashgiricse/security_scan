@@ -2,8 +2,7 @@ const { gql } = require("apollo-server");
 
 const typeDefs = gql`
   type Query {
-    scanResults(ids: [Int]): [ScanResult]
-    test: String!
+    scanResults(ids: [String]): [ScanResult]
   }
 
   type Mutation {
@@ -23,15 +22,15 @@ const typeDefs = gql`
       """
       Task queued at, in epoch
       """
-      queuedAt: Int
+      queuedAt: String
       """
       Task scanning at, in epoch
       """
-      scanningAt: Int
+      scanningAt: String
       """
       Task finished at, in epoch
       """
-      finishedAt: Int
+      finishedAt: String
     ): AddScanResultResponse!
   }
 
@@ -55,15 +54,15 @@ const typeDefs = gql`
     """
     Task queued at, in epoch
     """
-    queuedAt: Int
+    queuedAt: String
     """
     Task scanning at, in epoch
     """
-    scanningAt: Int
+    scanningAt: String
     """
     Task finished at, in epoch
     """
-    finishedAt: Int
+    finishedAt: String
   }
 
   type AddScanResultResponse {

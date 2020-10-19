@@ -7,7 +7,8 @@ const resolvers = {
         const results = await Result.find({});
         return results;
       } else {
-        console.log("bye");
+        const results = await Result.find({ _id: { $in: args.ids } });
+        return results;
       }
     },
   },
@@ -19,6 +20,19 @@ const resolvers = {
       context,
       info
     ) => {
+      if (
+        finishedAt === undefined &&
+        queuedAt === undefined &&
+        scanningAt === undefined
+      ) {
+        obj = {
+          success: false,
+          message: "Please provide either of finishedAt, queuedAt, scanningA",
+          scanResult: [null],
+        };
+        return obj;
+      }
+
       const result = new Result({
         status,
         repositoryName,
