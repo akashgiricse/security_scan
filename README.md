@@ -36,4 +36,4 @@ The above command will start the development server on `http://localhost:4000/`
 Now you can explore all the APIs and read their documentation.
 
 Here's a screenshot of API playground
-![screenshot]('./img/scanResult.png')
+![screenshot](./img/scanResult.png)
