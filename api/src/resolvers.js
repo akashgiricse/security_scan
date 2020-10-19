@@ -2,7 +2,7 @@ const Result = require("./models/Result");
 
 const resolvers = {
   Query: {
-    scanResults: async (parent, args, context, info) => {
+    getScanResults: async (parent, args, context, info) => {
       if (args.ids.length === 0) {
         const results = await Result.find({});
         return results;

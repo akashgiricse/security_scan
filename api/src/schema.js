@@ -5,7 +5,7 @@ const typeDefs = gql`
     """
     Get scan results
     """
-    scanResults(
+    getScanResults(
       """
       List of unique ids. If empty, return total response
       """
