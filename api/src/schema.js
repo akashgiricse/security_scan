@@ -6,32 +6,14 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addScanResult(
-      """
-      Status of the result
-      """
-      status: Status!
-      """
-      Name of the repository
-      """
-      repositoryName: String!
-      """
-      Findings
-      """
-      findings: Findings!
-      """
-      Task queued at, in epoch
-      """
-      queuedAt: String
-      """
-      Task scanning at, in epoch
-      """
-      scanningAt: String
-      """
-      Task finished at, in epoch
-      """
-      finishedAt: String
-    ): AddScanResultResponse!
+    addScanResult(input: ScanResultInput!): AddScanResultResponse!
+
+    updateScanResult(
+      id: String!
+      input: UpdateScanResultInput!
+    ): UpdateScanResultResponse!
+
+    deleteScanResult(id: String!): DeleteScanResultResponse!
   }
 
   type ScanResult {
@@ -67,8 +49,74 @@ const typeDefs = gql`
 
   type AddScanResultResponse {
     success: Boolean!
-    message: String
-    scanResult: [ScanResult]
+    message: String!
+    savedScanResult: ScanResult
+  }
+
+  type UpdateScanResultResponse {
+    success: Boolean!
+    message: String!
+    updatedScanResult: ScanResult
+  }
+
+  type DeleteScanResultResponse {
+    success: Boolean!
+    message: String!
+    deletedScanResultId: String
+  }
+
+  input UpdateScanResultInput {
+    """
+    Status of the result
+    """
+    status: Status
+    """
+    Name of the repository
+    """
+    repositoryName: String
+    """
+    Findings
+    """
+    findings: Findings
+    """
+    Task queued at, in epoch
+    """
+    queuedAt: String
+    """
+    Task scanning at, in epoch
+    """
+    scanningAt: String
+    """
+    Task finished at, in epoch
+    """
+    finishedAt: String
+  }
+
+  input ScanResultInput {
+    """
+    Status of the result
+    """
+    status: Status!
+    """
+    Name of the repository
+    """
+    repositoryName: String!
+    """
+    Findings
+    """
+    findings: Findings!
+    """
+    Task queued at, in epoch
+    """
+    queuedAt: String
+    """
+    Task scanning at, in epoch
+    """
+    scanningAt: String
+    """
+    Task finished at, in epoch
+    """
+    finishedAt: String
   }
 
   enum Status {
