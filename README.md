@@ -24,7 +24,7 @@ npm install
 
 ### 3. Setup the database
 
-Install mongodb on your local machine and edit the `mongoURI` according to your configuration
+Install mongodb on your local machine and edit the `mongoURI` in `api/config/default.json` according to your configuration
 
 ### 4. Start the development server
 
